@@ -42,6 +42,8 @@ function getRequest() {
         Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
         );
+        searchPhotos.resetPage();
+        hideButton()
         return;
       } else if (searchPhotos.page === 2) {
         Notify.success(`Hooray! We found ${totalHits} images.`);
@@ -54,7 +56,7 @@ function getRequest() {
 
       lightbox.refresh();
 
-      if (totalHits / searchPhotos.per_page <= searchPhotos.page) {
+      if (totalHits / searchPhotos.per_page >= searchPhotos.page) {
         Notify.warning(
           `We're sorry, but you've reached the end of search results.`
         );
@@ -75,6 +77,7 @@ function getPhotos(event) {
   searchPhotos.query = event.currentTarget.elements.searchQuery.value;
   if (searchPhotos.query === '') {
     Notify.warning('Please, enter word or words for searching pictures.');
+    
     return;
   }
   searchPhotos.resetPage();
