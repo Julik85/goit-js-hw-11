@@ -16,8 +16,8 @@ export default class SearchPhotos {
       const BASE_URL = 'https://pixabay.com/api/?';
       const url = `${BASE_URL}key=${this.personalKey}&q=${this.formQuery}&image_type=${this.image_type}&orientation=${this.orientation}&safesearch=${this.safesearch}&page=${this.page}&per_page=${this.per_page}`;
       const response = await axios.get(url);
-      this.incrementPage();
-      return response.data;
+      // this.incrementPage();
+      return await response.data;
     } catch (error) {
       throw new Error(error.message);
     }
