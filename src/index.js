@@ -31,8 +31,8 @@ function choseRadioButton() {
 }
 
 function getRequest() {
-  if (isLoading) return;
-  isLoading = true;
+  // if (isLoading) return;
+  // isLoading = true;
 
   searchPhotos
     .getGallery()
@@ -97,7 +97,7 @@ function tongleLoadMoreButton(totalHits) {
       showButton();
     }
     if (searchPhotos.page > 1) {
-      smoothScroll();
+      // smoothScroll();
     }
   }
 }
